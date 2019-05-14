@@ -330,6 +330,14 @@ dump_to_s(VALUE obj, int depth, Out out, bool as_ok) {
     oj_dump_cstr(rb_string_value_ptr((VALUE*)&rstr), (int)RSTRING_LEN(rstr), 0, 0, out);
 }
 
+
+static void
+dump_to_json(VALUE obj, int depth, Out out, bool as_ok) {
+    volatile VALUE	rstr = rb_funcall(obj, oj_to_json_id, 0);
+
+    oj_dump_raw(rb_string_value_ptr((VALUE*)&rstr), (int)RSTRING_LEN(rstr), out);
+}
+
 static ID	parameters_id = 0;
 
 typedef struct _strLen {
@@ -557,7 +565,7 @@ static struct _namedFunc	dump_map[] = {
     { "BigDecimal", dump_bigdecimal },
     { "Range", dump_to_s },
     { "Regexp", dump_regexp },
-    { "Oj::RawString", dump_to_s },
+    { "Oj::RawString", dump_to_json },
     //{ "Regexp", dump_to_s },
     { "Time", dump_time },
     { NULL, NULL },

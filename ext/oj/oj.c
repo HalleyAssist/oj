@@ -62,6 +62,7 @@ ID	oj_to_h_id;
 ID	oj_to_hash_id;
 ID	oj_to_json_id;
 ID	oj_to_s_id;
+ID  oj_to_json_id;
 ID	oj_to_sym_id;
 ID	oj_to_time_id;
 ID	oj_tv_nsec_id;
@@ -1584,6 +1585,7 @@ Init_oj() {
     oj_to_hash_id = rb_intern("to_hash");
     oj_to_json_id = rb_intern("to_json");
     oj_to_s_id = rb_intern("to_s");
+    oj_to_json_id = rb_intern("to_json");
     oj_to_sym_id = rb_intern("to_sym");
     oj_to_time_id = rb_intern("to_time");
     oj_tv_nsec_id = rb_intern("tv_nsec");

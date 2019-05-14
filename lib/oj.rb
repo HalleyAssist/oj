@@ -4,7 +4,7 @@ module Oj
     def initialize(raw)
       @raw = raw
     end
-    def to_s
+    def to_json
       @raw
     end
   end
