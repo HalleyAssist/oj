@@ -566,6 +566,7 @@ static struct _namedFunc	dump_map[] = {
     { "Range", dump_to_s },
     { "Regexp", dump_regexp },
     { "Oj::RawString", dump_to_json },
+    { "Oj::JsonHash", dump_to_json },
     //{ "Regexp", dump_to_s },
     { "Time", dump_time },
     { NULL, NULL },
