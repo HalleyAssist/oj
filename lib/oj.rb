@@ -8,14 +8,6 @@ module Oj
       @raw
     end
   end
-  class JsonHash < Hash
-    def initialize(raw)
-      @raw = raw
-    end
-    def to_json
-      @raw
-    end
-  end
 end
 
 begin
