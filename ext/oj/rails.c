@@ -338,6 +338,20 @@ dump_to_json(VALUE obj, int depth, Out out, bool as_ok) {
     oj_dump_raw(rb_string_value_ptr((VALUE*)&rstr), (int)RSTRING_LEN(rstr), out);
 }
 
+static void
+dump_cacheable_hash(VALUE obj, int depth, Out out, bool as_ok) {
+    volatile VALUE	rstr;
+
+    if (as_ok && rb_respond_to(obj, oj_to_json_id)) {
+        rstr = rb_funcall(obj, oj_to_json_id, 0);
+
+
+        oj_dump_raw(rb_string_value_ptr((VALUE*)&rstr), (int)RSTRING_LEN(rstr), out);
+    }
+
+    return dump_obj_attrs(obj, depth, out, as_ok);
+}
+
 static ID	parameters_id = 0;
 
 typedef struct _strLen {
@@ -566,6 +580,7 @@ static struct _namedFunc	dump_map[] = {
     { "Range", dump_to_s },
     { "Regexp", dump_regexp },
     { "Oj::RawString", dump_to_json },
+    { "Hash", dump_cacheable_hash },
     //{ "Regexp", dump_to_s },
     { "Time", dump_time },
     { NULL, NULL },
