@@ -557,6 +557,7 @@ static struct _namedFunc	dump_map[] = {
     { "BigDecimal", dump_bigdecimal },
     { "Range", dump_to_s },
     { "Regexp", dump_regexp },
+    { "Oj::RawString", dump_to_s },
     //{ "Regexp", dump_to_s },
     { "Time", dump_time },
     { NULL, NULL },

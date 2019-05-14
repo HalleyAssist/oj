@@ -1,5 +1,13 @@
 
 module Oj
+  class RawString
+    def initialize(raw)
+      @raw = raw
+    end
+    def to_s
+      @raw
+    end
+  end
 end
 
 begin
